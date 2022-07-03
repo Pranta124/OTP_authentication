@@ -1,5 +1,5 @@
 # OTP_authentication
-# login_controller
+# login_controller_Send_otp
        public function sendOtp(Request $request){
        $otp = rand(1000,9999);
         Log::info("otp = ".$otp);
@@ -56,4 +56,19 @@
 
 
     }
-*** 
+# Login with otp_controller
+    public function loginWithOtp(Request $request){
+        Log::info($request);
+
+        $user  = User::where([['mobile','=',request('mobile')],['otp','=',request('otp')]])->first();
+
+        if( $user){
+            Auth::login($user, true);
+            User::where('mobile','=',$request->mobile)->update(['otp' => null]);
+            return redirect('/checkout');
+        }
+        else{
+            return Redirect::back();
+        }
+    }
+
