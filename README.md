@@ -1,6 +1,6 @@
 # OTP_authentication
 # login_controller
-*** public function sendOtp(Request $request){
+***public function sendOtp(Request $request){
        $otp = rand(1000,9999);
         Log::info("otp = ".$otp);
         // $user = User::where('mobile','=',$request->mobile)->update(['otp' => $otp]);
