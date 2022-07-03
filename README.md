@@ -72,7 +72,6 @@
         }
     }
 # Send otp API_LOGIN
- // Mobile OTP Start
        public function sendOtpApi(Request $request){
         $otp = rand(1000,9999);
         Log::info("otp = ".$otp);
